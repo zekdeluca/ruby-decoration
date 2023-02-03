@@ -3,19 +3,11 @@ class CarefulThing
     @thing = thing
   end
 
-  def check_before_acting(action)
-    "#{@thing.name} looks around, everything looks fine. #{@thing.send(action)}"
+  def check_before_acting(action, *args)
+    "#{@thing.name} looks around, everything looks fine. #{@thing.send(action, *args)}"
   end
 
-  def move
-    check_before_acting(:move)
-  end
-
-  def stop
-    check_before_acting(:stop)
-  end
-
-  def jump
-    check_before_acting(:jump)
+  def method_missing(method, *args)
+    check_before_acting(method, *args)
   end
 end
