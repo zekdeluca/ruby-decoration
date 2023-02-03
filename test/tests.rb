@@ -48,4 +48,10 @@ class CarefulThingTest < Minitest::Test
     expected = "Thing looks around, everything looks fine. Thing has jumped!"
     assert_equal expected, careful_thing.jump
   end
+
+  def test_other_methods_are_not_handled_carefully
+    assert_raises(NoMethodError) do
+      careful_thing.is_careless
+    end
+  end
 end

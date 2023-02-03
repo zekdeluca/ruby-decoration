@@ -1,4 +1,6 @@
 class CarefulThing
+  DELEGATED_METHODS = [:move, :stop, :jump]
+
   def initialize(thing)
     @thing = thing
   end
@@ -8,6 +10,10 @@ class CarefulThing
   end
 
   def method_missing(method, *args)
-    check_before_acting(method, *args)
+    if DELEGATED_METHODS.include?(method)
+      check_before_acting(method, *args)
+    else
+      super
+    end
   end
 end
