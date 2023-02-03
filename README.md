@@ -16,11 +16,11 @@ $ bundle install
 ### A single time
 
 ```bash
-bundle exec ruby test/thing_test.rb
+bundle exec ruby test/tests.rb
 ```
 
 ### Have rerun watch your back
 
 ```bash
-rerun -x bundle exec ruby test/thing_test.rb
+rerun -x bundle exec ruby test/tests.rb
 ```
