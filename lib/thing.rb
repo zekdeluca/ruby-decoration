@@ -12,4 +12,8 @@ class Thing
   def stop
     "#{name} has stopped."
   end
+
+  def jump
+    "#{name} has jumped!"
+  end
 end

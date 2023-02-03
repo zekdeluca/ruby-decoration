@@ -18,6 +18,11 @@ class ThingTest < Minitest::Test
     expected = "Thing has stopped."
     assert_equal expected, thing.stop
   end
+
+  def test_thing_jumps
+    expected = "Thing has jumped!"
+    assert_equal expected, thing.jump
+  end
 end
 
 class CarefulThingTest < Minitest::Test
@@ -37,5 +42,10 @@ class CarefulThingTest < Minitest::Test
   def test_careful_thing_stops_carefully
     expected = "Thing looks around, everything looks fine. Thing has stopped."
     assert_equal expected, careful_thing.stop
+  end
+
+  def test_careful_thing_jumps_carefully
+    expected = "Thing looks around, everything looks fine. Thing has jumped!"
+    assert_equal expected, careful_thing.jump
   end
 end
