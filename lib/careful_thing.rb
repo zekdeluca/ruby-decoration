@@ -14,4 +14,8 @@ class CarefulThing
   def stop
     check_before_acting(:stop)
   end
+
+  def jump
+    check_before_acting(:jump)
+  end
 end
