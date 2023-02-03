@@ -54,4 +54,10 @@ class CarefulThingTest < Minitest::Test
       careful_thing.is_careless
     end
   end
+
+  def test_object_methods_are_also_not_handled_carefully
+    assert_raises(NoMethodError) do
+      careful_thing.to_s
+    end
+  end
 end
