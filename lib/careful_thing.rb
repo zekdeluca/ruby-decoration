@@ -1,4 +1,4 @@
-class CarefulThing
+class CarefulThing < BasicObject
   DELEGATED_METHODS = [:move, :stop, :jump]
 
   def initialize(thing)
