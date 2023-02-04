@@ -1,4 +1,6 @@
-class CarefulThing < BasicObject
+class CarefulThing
+  DECORATED_METHODS = [:move, :stop, :jump]
+
   def initialize(thing)
     @thing = thing
   end
@@ -8,6 +10,10 @@ class CarefulThing < BasicObject
   end
 
   def method_missing(method, *args)
-    check_before_acting(method, *args)
+    if DECORATED_METHODS.include?(method)
+      check_before_acting(method, *args)
+    else
+      @thing.send(method, *args)
+    end
   end
 end

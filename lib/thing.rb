@@ -16,4 +16,8 @@ class Thing
   def jump
     "#{name} has jumped!"
   end
+
+  def act_carelessly
+    "#{name} is acting carelessly!"
+  end
 end

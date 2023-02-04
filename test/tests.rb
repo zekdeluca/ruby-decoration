@@ -23,6 +23,11 @@ class ThingTest < Minitest::Test
     expected = "Thing has jumped!"
     assert_equal expected, thing.jump
   end
+
+  def test_thing_acts_carelessly
+    expected = "Thing is acting carelessly!"
+    assert_equal expected, thing.act_carelessly
+  end
 end
 
 class CarefulThingTest < Minitest::Test
@@ -49,14 +54,18 @@ class CarefulThingTest < Minitest::Test
     assert_equal expected, careful_thing.jump
   end
 
+  def test_non_safelisted_methods_are_executed_without_decoration
+    refute_match "Thing looks around, everything looks fine. ", careful_thing.act_carelessly
+  end
+
   def test_unknown_methods_are_not_handled
     assert_raises(NoMethodError) do
       careful_thing.is_careless
     end
   end
 
-  def test_object_methods_are_also_executed_carefully
+  def test_object_methods_are_executed_normally
     assert_respond_to careful_thing, :to_s
-    assert_match "Thing looks around, everything looks fine. ", careful_thing.to_s
+    refute_match "Thing looks around, everything looks fine. ", careful_thing.to_s
   end
 end
