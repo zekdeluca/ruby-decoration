@@ -49,15 +49,14 @@ class CarefulThingTest < Minitest::Test
     assert_equal expected, careful_thing.jump
   end
 
-  def test_other_methods_are_not_handled_carefully
+  def test_unknown_methods_are_not_handled
     assert_raises(NoMethodError) do
       careful_thing.is_careless
     end
   end
 
-  def test_object_methods_are_also_not_handled_carefully
-    assert_raises(NoMethodError) do
-      careful_thing.to_s
-    end
+  def test_object_methods_are_also_executed_carefully
+    assert_respond_to careful_thing, :to_s
+    assert_match "Thing looks around, everything looks fine. ", careful_thing.to_s
   end
 end
